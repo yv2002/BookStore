@@ -1,0 +1,10 @@
+.avatar-img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border: 2px solid #ffffff66;
+  transition: border-color 0.3s ease;
+}
+.avatar-img:hover {
+  border-color: #ffd54f;
+}

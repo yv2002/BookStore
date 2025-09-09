@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+body.dark-theme {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-theme a {
+  color: #bb86fc;
+}
+
+body.dark-theme .navbar {
+  background-color: #1e1e2f !important;
+}
+
+body.dark-theme .card {
+  background-color: #1e1e2f;
+  color: #fff;
+}
+
+body.dark-theme .btn-outline-light {
+  border-color: #ccc;
+  color: #ccc;
+}

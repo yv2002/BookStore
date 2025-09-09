@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4 py-3 shadow-sm mb-4 sticky-top">
+  <div class="container-fluid d-flex flex-wrap align-items-center justify-content-between gap-3">
+    <a class="navbar-brand fw-bold fs-3" routerLink="/">📚 BookZone</a>
+
+    <div class="flex-grow-1 me-auto ms-3">
+      <input
+  type="text"
+  [(ngModel)]="searchQuery"
+  class="form-control form-control-sm"
+  placeholder="Search..."
+  (ngModelChange)="onSearchChange($event)"
+  />
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <button *ngIf="userProfile && !isAdmin" class="btn btn-outline-light position-relative" (click)="goToCart()">
+        <i class="bi bi-cart-fill fs-4"></i>
+        <span *ngIf="cartCount > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          {{ cartCount }}
+        </span>
+      </button>
+
+      <button *ngIf="userProfile && !isAdmin" class="btn btn-outline-light" (click)="goToFavourites()">
+        <i class="bi bi-heart-fill fs-4 text-danger"></i>
+      </button>
+
+      <button *ngIf="isAdmin" routerLink="/users" class="btn btn-outline-light">
+        <i class="bi bi-people-fill fs-4"></i>
+      </button>
+
+      <button *ngIf="isAdmin" routerLink="/add" class="btn btn-outline-light">
+        <i class="bi bi-plus-lg me-1"></i> Add Book
+      </button>
+
+      <div class="text-light fw-semibold fs-5 me-3" *ngIf="userProfile; else guest">
+        Hello, {{ userProfile.username }}!
+      </div>
+      <ng-template #guest>
+        <div class="text-light fw-semibold fs-5 me-3">Hello, Guest!</div>
+      </ng-template>
+
+      <div class="dropdown" *ngIf="userProfile?.avatar">
+        <img
+          [src]="userProfile.avatar"
+          alt="User Avatar"
+          class="rounded-circle dropdown-toggle avatar-img"
+          data-bs-toggle="dropdown"
+        />
+        <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-3 border-0">
+          <li><a class="dropdown-item" routerLink="/profile">Edit Profile</a></li>
+          <li><a class="dropdown-item" routerLink="/settings">Settings</a></li>
+          <li><button class="dropdown-item text-danger fw-semibold" (click)="logout()">Logout</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
